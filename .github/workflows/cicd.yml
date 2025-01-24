@@ -25,6 +25,11 @@ jobs:
             pip install flask
             pip install pytest
 
+        - name: Clean up __pycache__ and .pyc files
+          run: |
+            find . -type d -name "__pycache__" -exec rm -r {} +
+            find . -type f -name "*.pyc" -exec rm -r {} +
+
         - name: Run tests
           run: |
             pytest
